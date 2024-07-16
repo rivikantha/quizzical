@@ -33,6 +33,7 @@ main{
   font-style: normal;
   border:none;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 #intro-page .button{

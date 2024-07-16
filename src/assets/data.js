@@ -1,1 +1,48 @@
-export default [{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"The Queen song `A Kind Of Magic` is featured in which 1986 film?","correct_answer":"Highlander","incorrect_answers":["Flash Gordon","Labyrinth","Howard the Duck"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"Who plays Jack Burton in the movie &quot;Big Trouble in Little China?&quot;","correct_answer":"Kurt Russell","incorrect_answers":["Patrick Swayze","John Cusack","Harrison Ford"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"Which of these films is NOT set in Los Angeles?","correct_answer":"RoboCop","incorrect_answers":["Blade Runner","The Terminator","Predator 2"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"Who wrote and directed the 1986 film &#039;Platoon&#039;?","correct_answer":"Oliver Stone","incorrect_answers":["Francis Ford Coppola","Stanley Kubrick","Michael Cimino"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"This movie contains the quote, &quot;I feel the need ... the need for speed!&quot;","correct_answer":"Top Gun","incorrect_answers":["Days of Thunder","The Color of Money","Cocktail"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"Which actor plays Obi-Wan Kenobi in Star Wars Episodes I-lll?","correct_answer":"Ewan McGregor","incorrect_answers":["Alec Guinness","Hayden Christensen","Liam Neeson"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"What is the name of the fictional retro-mod band starring Austin Powers as the lead vocalist?","correct_answer":"Ming Tea","incorrect_answers":["Cough Fi","Spear Mint","Mister E"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"When does &quot;Rogue One: A Star Wars Story&quot; take place chronologically in the series?","correct_answer":"Between Episode 3 and 4","incorrect_answers":["After Episode 6","Before Episode 1","Between Episode 4 and 5"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"What is the name of the island that &quot;Jurassic Park&quot; is built on?","correct_answer":"Isla Nublar","incorrect_answers":["Isla Sorna","Isla Muerta","Isla Pena"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"&quot;The first rule is: you don&#039;t talk about it&quot; is a reference to which movie?","correct_answer":"Fight Club","incorrect_answers":["The Island","Unthinkable","American Pie"]}]
+export const data = [
+    {
+        id:1,
+        type:"multiple",
+        difficulty:"easy",
+        category:"Entertainment: Film",
+        question:"The Queen song `A Kind Of Magic` is featured in which 1986 film?",        
+        correctAnswer:"Highlander",
+        incorrectAnswers:["Flash Gordon","Labyrinth","Howard the Duck"]
+        
+    },
+    {
+        id:2,
+        type:"multiple",
+        difficulty:"easy",
+        category:"Entertainment: Film",
+        question:"Who plays Jack Burton in the movie &quot;Big Trouble in Little China?&quot;",
+        correctAnswer:"Kurt Russell",
+        incorrectAnswers:["Patrick Swayze","John Cusack","Harrison Ford"]
+    },
+    {
+        id:3,
+        type:"multiple",
+        difficulty:"easy",
+        category:"Entertainment: Film",
+        question:"Which of these films is NOT set in Los Angeles?",
+        correctAnswer:"RoboCop",
+        incorrectAnswers:["Blade Runner","The Terminator","Predator 2"]
+    },
+    {
+        id:4,
+        type:"multiple",
+        difficulty:"easy",
+        category:"Entertainment: Film",
+        question:"Who wrote and directed the 1986 film &#039;Platoon&#039;?",
+        correctAnswer:"Oliver Stone",
+        incorrectAnswers:["Francis Ford Coppola","Stanley Kubrick","Michael Cimino"]
+    },
+    {
+        id:5,
+        type:"multiple",
+        difficulty:"easy",
+        category:"Entertainment: Film",
+        question:"This movie contains the quote, &quot;I feel the need ... the need for speed!&quot;",
+        correctAnswer:"Top Gun",
+        incorrectAnswers:["Days of Thunder","The Color of Money","Cocktail"]
+    }
+]

@@ -1,13 +1,23 @@
 import { useState , useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import data from "./assets/data.js"
 import Question from "./Question"
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false)
-  const [questionsData, setQuestionsData] = useState(null)
+  const [questionsData, setQuestionsData] = useState(data)
+
+  useEffect(()=>{
+    setQuestionsData(data)
+  },[gameStarted])
+
+  const questions = questionsData.map((question)=>{
+    return (
+      <Question 
+        questionText={question.question}
+      />
+    )
+  })
 
 
   return (
@@ -28,7 +38,7 @@ function App() {
 
         :
         <div id="game-page">
-          <Question />
+          {questions}
         </div>
         
 

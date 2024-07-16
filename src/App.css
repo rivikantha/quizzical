@@ -39,3 +39,35 @@ main{
 #intro-page .button{
   margin-top:29px;
 }
+
+#game-page{
+  padding:40px 75px;
+}
+
+.question-container hr{
+  border:none;
+  height: 1px;
+  background-color: #DBDEF0;
+  /*border: 0.79px solid #DBDEF0;*/
+}
+
+.qeustion{
+  font-size:16px;
+  margin-top:10px;
+  margin-bottom:12px;
+}
+
+.options-container{
+  margin-bottom: 14px;
+}
+
+.options-button{
+  font-family: "Inter", sans-serif;
+  color:#293264;
+  font-size:10px;
+  padding:5px 10px;
+  background-color: transparent;
+  border:1px solid #4D5B9E;
+  border-radius: 8px;
+  margin-right:13px;
+}

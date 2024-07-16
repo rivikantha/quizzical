@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import data from "./assets/data.js"
+import Question from "./Question"
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false)
+  const [questionsData, setQuestionsData] = useState(null)
+
 
   return (
     <main>
@@ -23,8 +27,10 @@ function App() {
         </div>
 
         :
-
-        <h1>Game Started</h1>
+        <div id="game-page">
+          <Question />
+        </div>
+        
 
       }
       

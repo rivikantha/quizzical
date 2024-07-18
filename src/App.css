@@ -1,6 +1,9 @@
 main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 550px;
-  height: 550px;
+  min-height: 550px;
   background-color: #F5F7FB;
   background-image: url('./assets/quizzical_app_bg.png');
   background-repeat: no-repeat;
@@ -59,6 +62,9 @@ main{
 
 .options-container{
   margin-bottom: 14px;
+  display:flex;
+  flex-wrap: wrap;
+  margin-top:-10px;
 }
 
 .options-button{
@@ -69,5 +75,12 @@ main{
   background-color: transparent;
   border:1px solid #4D5B9E;
   border-radius: 8px;
+  margin-top:10px;
   margin-right:13px;
+  cursor: pointer;
+}
+
+.options-button:hover{
+  border:1px solid #D6DBF5 ;
+  background-color: #D6DBF5;
 }

@@ -39,12 +39,26 @@ main{
   cursor: pointer;
 }
 
+.button:hover{
+  background-color:#45528e;
+}
+
 #intro-page .button{
   margin-top:29px;
 }
 
 #game-page{
   padding:40px 75px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-page .button{
+  width: 120px;
+  height:35px;
+  font-size:10px;
 }
 
 .question-container hr{

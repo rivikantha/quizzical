@@ -10,8 +10,17 @@ function App() {
   const [questionsData, setQuestionsData] = useState(null)
 
   useEffect(()=>{
-    setQuestionsData(data)
+    setQuestionsData(
+
+      data.map(question=>{
+
+        return {...question,answerChoice:""}
+      })
+
+    )
   },[])
+
+
 
   /**
    * Create answer options 
@@ -69,7 +78,10 @@ function App() {
 
         :
         <div id="game-page">
-          {questions}
+          <div class="questions-container">
+            {questions}
+          </div>
+          <button className="button">Check Answers</button>
         </div>
       }
 

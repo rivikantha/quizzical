@@ -2,6 +2,7 @@ import { useState , useEffect } from 'react'
 import './App.css'
 import {data} from "./assets/data.js"
 import Question from "./Question"
+import { nanoid } from 'nanoid'
 
 console.log(data)
 
@@ -14,13 +15,11 @@ function App() {
 
       data.map(question=>{
 
-        return {...question,answerChoice:""}
+        return {id:nanoid(),...question,answerChoice:""}
       })
 
     )
   },[])
-
-
 
   /**
    * Create answer options 
@@ -44,18 +43,29 @@ function App() {
     return shuffledArray
   }
 
+  /**
+   * A Function to handle selecting a choice 
+   */
+
+   function handleClickChoice(id,answerChoice){
+      console.log(id,answerChoice)
+   }
+
   const questions = questionsData?.map((question)=>{
     let options = question.incorrectAnswers.map(a=>a)
     options.push(question.correctAnswer)
 
-    let shuffledOptions = createChoices(options)
-    console.log(shuffledOptions)
+    let shuffledOptions = createChoices(options)   
 
     return (
-      <Question 
+      <Question
+        key={question.id}
+        id={question.id}
         questionText={question.question}
         options = {shuffledOptions}
         correctAnswer={question.correctAnswer}
+        answerChoice={question.answerChoice}
+        handleClickChoice={handleClickChoice}
       />
     )
   })
@@ -78,7 +88,7 @@ function App() {
 
         :
         <div id="game-page">
-          <div class="questions-container">
+          <div className="questions-container">
             {questions}
           </div>
           <button className="button">Check Answers</button>

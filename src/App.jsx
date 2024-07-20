@@ -7,19 +7,30 @@ import { nanoid } from 'nanoid'
 console.log(data)
 
 function App() {
-  const [gameStarted, setGameStarted] = useState(false)
-  const [questionsData, setQuestionsData] = useState(null)
 
-  useEffect(()=>{
-    setQuestionsData(
+	const [gameStarted, setGameStarted] = useState(false)
+	const [questionsData, setQuestionsData] = useState(null)
 
-      data.map(question=>{
+	useEffect(()=>{
+		setQuestionsData(
 
-        return {id:nanoid(),...question,answerChoice:""}
-      })
+			data.map(question=>{
+				
+				let options = question.incorrectAnswers.map(a=>a)
+				options.push(question.correctAnswer)
 
-    )
-  },[])
+				let shuffledOptions = createChoices(options)
+
+				return {
+					...question,
+					id:nanoid(),
+					answerChoice:"",
+					options:shuffledOptions
+				}
+			})
+
+		)
+	},[])
 
   /**
    * Create answer options 
@@ -40,7 +51,7 @@ function App() {
       shuffledArray.push(optionsArray.splice(i,1)[0])
     }
 
-    return shuffledArray
+	return shuffledArray
   }
 
   /**
@@ -48,21 +59,33 @@ function App() {
    */
 
    function handleClickChoice(id,answerChoice){
-      console.log(id,answerChoice)
+      //console.log(id,answerChoice)
+      setQuestionsData(oldQuestions=>{
+        const newQuestions = oldQuestions.map(question=>{
+        	if(id == question.id){
+				return {...question, answerChoice:answerChoice}
+			}else{
+				return question
+			}
+          
+        })
+
+		console.log(newQuestions)
+
+		return newQuestions
+
+      })
+
    }
 
-  const questions = questionsData?.map((question)=>{
-    let options = question.incorrectAnswers.map(a=>a)
-    options.push(question.correctAnswer)
-
-    let shuffledOptions = createChoices(options)   
+  const questions = questionsData?.map((question)=>{   
 
     return (
       <Question
         key={question.id}
         id={question.id}
         questionText={question.question}
-        options = {shuffledOptions}
+        options = {question.options}
         correctAnswer={question.correctAnswer}
         answerChoice={question.answerChoice}
         handleClickChoice={handleClickChoice}

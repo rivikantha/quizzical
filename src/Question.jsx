@@ -8,10 +8,16 @@ export default function Question(props) {
 
     i++
 
+    let classNames = ""
+
+    if(props.answerChoice === optionText){
+      classNames +=" answer-selected"
+    }
+
     return (
       <button
         key={i} 
-        className="options-button" 
+        className = {"options-button "+classNames}
         type="button"
         value={optionText}
         onClick={(event)=>{

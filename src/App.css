@@ -94,6 +94,11 @@ main{
   cursor: pointer;
 }
 
+.options-button.answer-selected{
+  border:1px solid #D6DBF5 ;
+  background-color: #D6DBF5;
+}
+
 .options-button:hover{
   border:1px solid #D6DBF5 ;
   background-color: #D6DBF5;

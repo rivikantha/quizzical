@@ -99,7 +99,29 @@ main{
   background-color: #D6DBF5;
 }
 
+.options-button.wrong-selected{
+  border:1px solid #F8BCBC ;
+  background-color: #F8BCBC;
+}
+
+.options-button.correct-answer{
+  border:1px solid #94D7A2;
+  background-color: #94D7A2;
+}
+
 .options-button:hover{
   border:1px solid #D6DBF5 ;
   background-color: #D6DBF5;
+}
+
+.result-container{
+  margin-top:10px;
+}
+
+.result-text{
+  font-size:12px;
+  font-family: "Inter", sans-serif;
+  color:#293264;
+  font-weight: 700;
+  margin-right: 19px;
 }

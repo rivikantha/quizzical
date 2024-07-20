@@ -12,6 +12,16 @@ export default function Question(props) {
 
     if(props.answerChoice === optionText){
       classNames +=" answer-selected"
+
+      if(props.questionsCorrected && optionText !== props.correctAnswer){
+        classNames +=" wrong-selected"
+      }
+    }
+
+    if(props.questionsCorrected){
+      if(optionText === props.correctAnswer){
+        classNames += " correct-answer"
+      }
     }
 
     return (

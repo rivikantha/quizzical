@@ -10,6 +10,8 @@ function App() {
 
 	const [gameStarted, setGameStarted] = useState(false)
 	const [questionsData, setQuestionsData] = useState(null)
+	const [questionsCorrected, setQuestionsCorrected] = useState(null)
+	const [numCorrect, setNumCorrect] = useState(0)
 
 	useEffect(()=>{
 		setQuestionsData(
@@ -30,7 +32,7 @@ function App() {
 			})
 
 		)
-	},[])
+	},[gameStarted])
 
   /**
    * Create answer options 
@@ -54,44 +56,64 @@ function App() {
 	return shuffledArray
   }
 
-  /**
-   * A Function to handle selecting a choice 
-   */
+	/**
+	 * A Function to handle selecting a choice 
+	 */
 
-   function handleClickChoice(id,answerChoice){
-      //console.log(id,answerChoice)
-      setQuestionsData(oldQuestions=>{
-        const newQuestions = oldQuestions.map(question=>{
-        	if(id == question.id){
+	function handleClickChoice(id,answerChoice){
+		//console.log(id,answerChoice)
+		setQuestionsData(oldQuestions=>{
+		const newQuestions = oldQuestions.map(question=>{
+			if(id == question.id){
 				return {...question, answerChoice:answerChoice}
 			}else{
 				return question
 			}
-          
-        })
+			
+		})
 
 		console.log(newQuestions)
 
 		return newQuestions
 
-      })
+		})
 
-   }
+	}
 
-  const questions = questionsData?.map((question)=>{   
+	function checkAnsers(){
 
-    return (
-      <Question
-        key={question.id}
-        id={question.id}
-        questionText={question.question}
-        options = {question.options}
-        correctAnswer={question.correctAnswer}
-        answerChoice={question.answerChoice}
-        handleClickChoice={handleClickChoice}
-      />
-    )
-  })
+		setQuestionsCorrected(true);
+		let correctAnswers=0;
+		for(let i=0; i<questionsData.length; i++){
+			if(questionsData[i].correctAnswer === questionsData[i].answerChoice){
+				correctAnswers++
+			}
+		}
+
+		setNumCorrect(correctAnswers)
+		
+	}
+
+	function playAgain(){
+		setGameStarted(false)
+		setQuestionsCorrected(false)
+	}
+
+	const questions = questionsData?.map((question)=>{   
+
+	return (
+		<Question
+			key={question.id}
+			id={question.id}
+			questionText={question.question}
+			options = {question.options}
+			correctAnswer={question.correctAnswer}
+			answerChoice={question.answerChoice}
+			handleClickChoice={handleClickChoice}
+			questionsCorrected={questionsCorrected}
+		/>
+	)
+	})
 
   return (
     <main>
@@ -109,13 +131,24 @@ function App() {
           </button>
         </div>
 
-        :
-        <div id="game-page">
-          <div className="questions-container">
-            {questions}
-          </div>
-          <button className="button">Check Answers</button>
-        </div>
+		:
+		<div id="game-page">
+			<div className="questions-container">
+				{questions}
+			</div>
+			<div className="result-container">
+
+				{questionsCorrected && <span className="result-text">You scored {numCorrect}/{questionsData.length} correct answers</span> } 
+				<button 
+					className="button" 
+					onClick={()=>{questionsCorrected?playAgain():checkAnsers()}}
+				>
+					{questionsCorrected?"Play Again":"Check Answers"}
+				</button>
+			
+			</div>
+			
+		</div>
       }
       
     </main>

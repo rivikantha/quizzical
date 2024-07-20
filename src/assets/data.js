@@ -1,6 +1,5 @@
-export const data = [
-    {
-        id:1,
+export const data = [    {
+        
         type:"multiple",
         difficulty:"easy",
         category:"Entertainment: Film",
@@ -9,8 +8,7 @@ export const data = [
         incorrectAnswers:["Flash Gordon","Labyrinth","Howard the Duck"]
         
     },
-    {
-        id:2,
+    {        
         type:"multiple",
         difficulty:"easy",
         category:"Entertainment: Film",
@@ -18,8 +16,7 @@ export const data = [
         correctAnswer:"Kurt Russell",
         incorrectAnswers:["Patrick Swayze","John Cusack","Harrison Ford"]
     },
-    {
-        id:3,
+    {        
         type:"multiple",
         difficulty:"easy",
         category:"Entertainment: Film",
@@ -27,8 +24,7 @@ export const data = [
         correctAnswer:"RoboCop",
         incorrectAnswers:["Blade Runner","The Terminator","Predator 2"]
     },
-    {
-        id:4,
+    {        
         type:"multiple",
         difficulty:"easy",
         category:"Entertainment: Film",
@@ -36,8 +32,7 @@ export const data = [
         correctAnswer:"Oliver Stone",
         incorrectAnswers:["Francis Ford Coppola","Stanley Kubrick","Michael Cimino"]
     },
-    {
-        id:5,
+    {        
         type:"multiple",
         difficulty:"easy",
         category:"Entertainment: Film",

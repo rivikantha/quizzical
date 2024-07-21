@@ -1,10 +1,9 @@
 import { useState , useEffect } from 'react'
 import './App.css'
-import {data} from "./assets/data.js"
+//import {data} from "./assets/data.js"
 import Question from "./Question"
 import { nanoid } from 'nanoid'
 
-console.log(data)
 
 function App() {
 
@@ -14,24 +13,54 @@ function App() {
 	const [numCorrect, setNumCorrect] = useState(0)
 
 	useEffect(()=>{
-		setQuestionsData(
 
-			data.map(question=>{
+		async function getQuestionFromAPI(){
+			const res = await fetch("https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple")
+			const receivedData = await res.json()
+			
+			if(!receivedData.results)
+				return
 				
-				let options = question.incorrectAnswers.map(a=>a)
-				options.push(question.correctAnswer)
+			setQuestionsData(
 
-				let shuffledOptions = createChoices(options)
+				receivedData.results.map(question=>{
+					
+					let options = question.incorrect_answers.map(a=>a)
+					options.push(question.correct_answer)
+	
+					let shuffledOptions = createChoices(options)
+	
+					return {
+						...question,
+						id:nanoid(),
+						answerChoice:"",
+						options:shuffledOptions
+					}
+				})
+	
+			)		
+		}
 
-				return {
-					...question,
-					id:nanoid(),
-					answerChoice:"",
-					options:shuffledOptions
-				}
-			})
+		getQuestionFromAPI();
 
-		)
+		// setQuestionsData(
+
+		// 	data.map(question=>{
+				
+		// 		let options = question.incorrectAnswers.map(a=>a)
+		// 		options.push(question.correctAnswer)
+
+		// 		let shuffledOptions = createChoices(options)
+
+		// 		return {
+		// 			...question,
+		// 			id:nanoid(),
+		// 			answerChoice:"",
+		// 			options:shuffledOptions
+		// 		}
+		// 	})
+
+		// )
 	},[gameStarted])
 
   /**
@@ -61,7 +90,7 @@ function App() {
 	 */
 
 	function handleClickChoice(id,answerChoice){
-		//console.log(id,answerChoice)
+		
 		setQuestionsData(oldQuestions=>{
 		const newQuestions = oldQuestions.map(question=>{
 			if(id == question.id){
@@ -71,8 +100,6 @@ function App() {
 			}
 			
 		})
-
-		console.log(newQuestions)
 
 		return newQuestions
 
@@ -85,7 +112,7 @@ function App() {
 		setQuestionsCorrected(true);
 		let correctAnswers=0;
 		for(let i=0; i<questionsData.length; i++){
-			if(questionsData[i].correctAnswer === questionsData[i].answerChoice){
+			if(questionsData[i].correct_answer === questionsData[i].answerChoice){
 				correctAnswers++
 			}
 		}
@@ -107,7 +134,7 @@ function App() {
 			id={question.id}
 			questionText={question.question}
 			options = {question.options}
-			correctAnswer={question.correctAnswer}
+			correctAnswer={question.correct_answer}
 			answerChoice={question.answerChoice}
 			handleClickChoice={handleClickChoice}
 			questionsCorrected={questionsCorrected}
